@@ -2,7 +2,7 @@
   <div class="popup" @click="closePopup">
     <div class="popup-content small-popup" @click.stop>
       <slot></slot>
-     
+      <!-- <button @click="close">Close</button> -->
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style scoped>
-
+/* Add your popup styles here */
 .popup {
   position: fixed;
   top: 0;
@@ -35,11 +35,18 @@ export default {
   background: #fff;
   padding: 10px;
   border-radius: 5px;
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .small-popup {
   max-width: 50%; 
-  max-height: 100%; 
+  max-height: 80%; 
   width: 100%;
   height: 100%;
 }

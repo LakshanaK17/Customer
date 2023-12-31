@@ -238,10 +238,8 @@ export default {
   max-width: 600px;
   margin: 10px auto;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {

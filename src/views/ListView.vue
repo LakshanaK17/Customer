@@ -31,11 +31,8 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr
-            v-for="customer in customers"
-            :key="customer.id"
-          >
+        <tbody v-for="customer in customers" :key="customer.id">
+          <tr>
             <td @click="toggleRow(customer.id)">
               {{ customer.name }}
             </td>
@@ -52,59 +49,88 @@
               {{ customer.country }}
             </td>
             <td>
-  <button
-    :class="{ 'active-button': customer.status=='Active', 'inactive-button':customer.status=='Inactive' }"
-    @click="toggleStatus(customer)"
-  >
-    {{ customer.status }}
-  </button>
-</td>
-            <td>
-              <button class="edit-button" @click="editCustomer(customer)">
-                Edit
-              </button>
-              <button
-                class="delete-button"
-                @click="deleteCustomer(customer.id)"
-              >
-                Delete
-              </button>
-            </td>
+         
+          <button
+            :class="{ 'active-button': customer.status == 'Active', 'inactive-button': customer.status == 'Inactive' }"
+            @click="toggleStatus(customer)">
+            {{ customer.status }}
+          </button>
+          </td>
+          <td>
+            <button class="edit-button" @click="editCustomer(customer)">
+              Edit
+            </button>
+            <button class="delete-button" @click="deleteCustomer(customer.id)">
+              Delete
+            </button>
+          </td>
           </tr>
-          <tr v-if="expandedRow !== null">
+          <!-- <tr v-if="expandedRow ? expandedRow.id == customer.id : false">
             <td colspan="7">
               <div v-if="expandedRow">
-                <ul>
-                  <li><strong>Name:</strong> {{ expandedRow.name }}</li>
-                  <li><strong>Company:</strong> {{ expandedRow.company }}</li>
-                  <li>
-                    <strong>Phone Number:</strong> {{ expandedRow.phone }}
-                  </li>
-                  <li><strong>Email:</strong> {{ expandedRow.email }}</li>
-                  <li><strong>Country:</strong> {{ expandedRow.country }}</li>
-                  <li><strong>Status:</strong> {{ expandedRow.status }}</li>
-                </ul>
-              </div>
+            <td @click="toggleRow(customer.id)">
+              {{ customer.country }}
             </td>
-          </tr>
-        </tbody>
-      </table>
+            <td @click="toggleRow(customer.id)">
+              {{ customer.country }}
+            </td>
+            <ul>
+              <li><strong>Namemnb:</strong> {{ expandedRow.id }}</li>
+              <li><strong>Namemnb:</strong> {{ expandedRow.name }}</li>
+              <li><strong>Company:</strong> {{ expandedRow.company }}</li>
+              <li>
+                <strong>Phone Number:</strong> {{ expandedRow.phone }}
+              </li>
+              <li><strong>Email:</strong> {{ expandedRow.email }}</li>
+              <li><strong>Country:</strong> {{ expandedRow.country }}</li>
+              <li><strong>Status:</strong> {{ expandedRow.status }}</li>
+            </ul>
     </div>
-    <div class="list-view__footer">
-      <div class="list-view__footer__pagination">
-        <ul>
-          <li v-for="page in pages" :key="page">
-            <a
-              @click="changePage(page)"
-              :class="{ active: currentPage === page }"
-            >{{ page }}</a>
-          </li>
-        </ul>
-      </div>
+    </td>
+    </tr> -->
+    <tr v-if="expandedRow ? expandedRow.id == customer.id : false">
+      <td style="border-bottom-style: hidden;">
+        {{ customer.name }}
+      </td>
+      <td style="border-bottom-style: hidden;">
+        {{ customer.company }}
+      </td>
+      <td style="border-bottom-style: hidden;">
+        {{ customer.phone }}
+      </td>
+      <td style="border-bottom-style: hidden;">
+        {{ customer.email }}
+      </td>
+      <td style="border-bottom-style: hidden;">
+        {{ customer.country }}
+      </td>
+      <td>
+   
+   
+    </td>
+    <td>
+      <button class="edit-button" @click="editCustomer(customer)">
+        Edit
+      </button>
+      <button class="delete-button" @click="deleteCustomer(customer.id)">
+        Delete
+      </button>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+  <div class="list-view__footer">
+    <div class="list-view__footer__pagination">
+      <ul>
+        <li v-for="page in pages" :key="page">
+          <a @click="changePage(page)" :class="{ active: currentPage === page }">{{ page }}</a>
+        </li>
+      </ul>
     </div>
   </div>
+  </div>
 </template>
-
 <script>
 import { ref, reactive, onMounted } from "vue";
 import axios from "axios";
@@ -112,7 +138,7 @@ import MockAdapter from "axios-mock-adapter";
 import AddCustomerForm from "./AddCustomerForm.vue";
 import Popup from "./Popup.vue";
 import customerData from "./customers.json";
-
+// import 'vue3-easy-data-table/dist/style.css';
 
 export default {
   components: {
@@ -134,24 +160,27 @@ export default {
 
     const mock = new MockAdapter(axios);
 
-
+    // Mocking the API response
     mock.onGet("/customers").reply(200, customerData);
 
     const addCustomer = async (newCustomerData) => {
       try {
-       
+        // Mock the API call for adding a new customer
         mock.onPost("/customers").reply(201, newCustomerData);
 
+        // Update the customers in the local state
         const response = await axios.post("/customers", newCustomerData);
         const addedCustomer = response.data;
         customers.value.push(addedCustomer);
 
+        // Close the modal or perform other actions as needed
         showModal.value = false;
 
+        // Log a message to the console to check if the function is called
         console.log("addCustomer function called:", newCustomerData);
       } catch (error) {
         console.error("Error adding customer:", error);
-       
+        // Handle error, show error message, etc.
       }
     };
 
@@ -196,14 +225,15 @@ export default {
 
     const openAddCustomerForm = () => {
       this.isAddCustomerFormVisible = true;
-     
+      // alert('Hi');
     };
 
     const toggleRow = (customerId) => {
+
       if (expandedRow.value === customerId) {
         expandedRow.value = null;
       } else {
-       
+        // Find the customer with the matching id
         const selectedCustomer = customers.value.find(
           (customer) => customer.id === customerId
         );
@@ -212,7 +242,7 @@ export default {
       }
     };
 
-    
+
     const changePage = (page) => {
       this.currentPage = page;
       axios.get(`/customers?page=${this.currentPage}`).then((response) => {
@@ -247,7 +277,8 @@ export default {
   background-color: #f8f8f8;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden; 
+  overflow: hidden;
+  /* Ensure rounded corners are visible */
 }
 
 .list-view__header {
@@ -256,8 +287,10 @@ export default {
   align-items: center;
   padding: 1.5rem;
   border-bottom: 2px solid #ddd;
-  background-color: #3498db;  
-  color: #0c0a0a; 
+  background-color: #3498db;
+  /* Blue color */
+  color: #0c0a0a;
+  /* White text */
   border-radius: 8px 8px 0 0;
 }
 
@@ -268,7 +301,7 @@ export default {
 
 .list-view__header button {
   padding: 1.2rem 2.4rem;
-  margin-right: 1rem; 
+  margin-right: 1rem;
   background-color: #2ecc71;
   color: #fff;
   border: none;
@@ -356,8 +389,8 @@ export default {
 
 .active-button {
   padding: 0.5rem 1rem;
-  background-color: #a6e7d8;
-  color: #51877b;
+  background-color: #4caf50;
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -366,8 +399,8 @@ export default {
 
 .inactive-button {
   padding: 0.5rem 1rem;
-  background-color: #fdc5c5;
-  color:#df1502;
+  background-color: #e74c3c;
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -375,7 +408,7 @@ export default {
 }
 
 .list-view__body table td .edit-button {
-  background-color: #3498db; 
+  background-color: #3498db;
   padding: 2px;
   margin-right: 0.5rem;
   color: #fff;
@@ -386,11 +419,11 @@ export default {
 }
 
 .list-view__body table td .edit-button:hover {
-  background-color: #2980b9; 
+  background-color: #2980b9;
 }
 
 .list-view__body table td .delete-button {
-  background-color: #e74c3c; 
+  background-color: #e74c3c;
   padding: 2px;
   color: #fff;
   border: none;
@@ -400,7 +433,15 @@ export default {
 }
 
 .list-view__body table td .delete-button:hover {
-  background-color: #c0392b; 
+  background-color: #c0392b;
 }
-
+.add-customer-form {
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 </style>
