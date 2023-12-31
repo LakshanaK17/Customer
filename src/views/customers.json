@@ -1,0 +1,140 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "company": "CDE Corporation",
+      "phone": "9876543210",
+      "email": "john.doe@example.com",
+      "country": "USA",
+      "status": "Inactive"
+    },
+    {
+      "id": 2,
+      "name": "Mary Smith",
+      "company": "ABC Ltd",
+      "phone": "8765432109",
+      "email": "mary.smith@example.com",
+      "country": "Canada",
+      "status": "Active"
+    },
+    {
+      "id": 3,
+      "name": "Alice Johnson",
+      "company": "XYZ Enterprises",
+      "phone": "7654321098",
+      "email": "alice.johnson@example.com",
+      "country": "UK",
+      "status": "Active"
+    },
+    {
+      "id": 4,
+      "name": "Bob Williams",
+      "company": "PQR Inc",
+      "phone": "6543210987",
+      "email": "bob.williams@example.com",
+      "country": "Germany",
+      "status": "Active"
+    },
+    {
+      "id": 5,
+      "name": "Eva Brown",
+      "company": "LMN Corporation",
+      "phone": "5432109876",
+      "email": "eva.brown@example.com",
+      "country": "France",
+      "status": "Active"
+    },
+    {
+      "id": 6,
+      "name": "David Taylor",
+      "company": "JKL Ltd",
+      "phone": "4321098765",
+      "email": "david.taylor@example.com",
+      "country": "Australia",
+      "status": "Active"
+    },
+    {
+      "id": 7,
+      "name": "Sophie Lee",
+      "company": "MNO Enterprises",
+      "phone": "3210987654",
+      "email": "sophie.lee@example.com",
+      "country": "Japan",
+      "status": "Active"
+    },
+    {
+      "id": 8,
+      "name": "Tom Miller",
+      "company": "FGH Inc",
+      "phone": "2109876543",
+      "email": "tom.miller@example.com",
+      "country": "Brazil",
+      "status": "Active"
+    },
+    {
+      "id": 9,
+      "name": "Olivia Garcia",
+      "company": "RST Corporation",
+      "phone": "1098765432",
+      "email": "olivia.garcia@example.com",
+      "country": "India",
+      "status": "Active"
+    },
+    {
+      "id": 10,
+      "name": "Charlie Martinez",
+      "company": "UVW Ltd",
+      "phone": "9876543210",
+      "email": "charlie.martinez@example.com",
+      "country": "China",
+      "status": "Active"
+    },
+    {
+      "id": 11,
+      "name": "Grace Robinson",
+      "company": "HIJ Enterprises",
+      "phone": "8765432109",
+      "email": "grace.robinson@example.com",
+      "country": "South Africa",
+      "status": "Active"
+    },
+    {
+      "id": 12,
+      "name": "Daniel Hall",
+      "company": "KLM Inc",
+      "phone": "7654321098",
+      "email": "daniel.hall@example.com",
+      "country": "Russia",
+      "status": "Active"
+    },
+    {
+      "id": 13,
+      "name": "Emma Wilson",
+      "company": "NOP Ltd",
+      "phone": "6543210987",
+      "email": "emma.wilson@example.com",
+      "country": "Mexico",
+      "status": "Active"
+    },
+    {
+      "id": 14,
+      "name": "James Harris",
+      "company": "QRS Corporation",
+      "phone": "5432109876",
+      "email": "james.harris@example.com",
+      "country": "Italy",
+      "status": "Active"
+    },
+    {
+      "id": 15,
+      "name": "Lily Turner",
+      "company": "VWX Enterprises",
+      "phone": "4321098765",
+      "email": "lily.turner@example.com",
+      "country": "Spain",
+      "status": "Active"
+    }
+  ],
+  "pages": [1, 2, 3, 4, 5]
+}
