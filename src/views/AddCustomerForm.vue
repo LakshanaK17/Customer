@@ -1,6 +1,6 @@
 <template>
-  <div class="container ">
-    <div class="add-customer-form ">
+  <div class="container">
+    <div class="add-customer-form">
       <h2 class="mb-4 font-weight-bold">Add Customer</h2>
       <form @submit.prevent="submitForm">
         <div class="mb-3">
@@ -117,10 +117,11 @@
           />
         </div>
 
-
-       
-        
-        <div v-for="(address, index) in customer.addresses" :key="index" class="mb-3 address-group">
+        <div
+          v-for="(address, index) in customer.addresses"
+          :key="index"
+          class="mb-3 address-group"
+        >
           <input
             type="text"
             v-model="address.number"
@@ -288,6 +289,7 @@ button:hover {
 
 .address-group {
   display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line on small screens */
   gap: 10px;
   margin-bottom: 10px;
 }
@@ -313,5 +315,25 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+  .add-customer-form {
+    padding: 5px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  input,
+  select {
+    padding: 8px;
+  }
+
+  button {
+    padding: 8px 12px;
+  }
 }
 </style>

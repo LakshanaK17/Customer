@@ -43,11 +43,4 @@ export default {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-.small-popup {
-  max-width: 50%; 
-  max-height: 80%; 
-  width: 100%;
-  height: 100%;
-}
 </style>
